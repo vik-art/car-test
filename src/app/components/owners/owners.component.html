@@ -1,0 +1,42 @@
+<div class="container">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+        <h2>Добавить нового владельца</h2>
+        <div class="form-control-container">
+            <div class="form-control">
+                <label for="first-name"></label>
+                <input formControlName="aFirstName" type="text" id="name" placeholder="Имя">
+            </div>
+            <div class="form-control">
+                <label for="last-name"></label>
+                <input formControlName="aLastName" type="text" id="name" placeholder="Фамилия">
+            </div>
+            <div class="form-control">
+                <label for="fathers-name"></label>
+                <input formControlName="aMiddleName" type="text" id="name" placeholder="Отчество">
+            </div>
+            <div class="card" formArrayName="aCars">
+                <h2>Автомобили</h2>
+                <button class="btn" type="button" (click)="addCar()">Добавить автомобиль</button>
+                <div class="cars-container">
+                    <div class="form-control" *ngFor="let control of getControls(); 
+                let idx = index" [formGroupName]="idx" id="{{idx}}">
+                        <label>Автомобиль {{idx + 1}}</label><br />
+                        <input type="text" formControlName="number" placeholder="Номер">
+                        <input type="text" formControlName="model" placeholder="Модель">
+                        <input type="text" formControlName="mark" placeholder="Марка">
+                        <input type="text" formControlName="year" placeholder="Год">
+                        <div>
+                            <button class="btn" (click)="removeContol(idx)">
+                                Remove
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button [disabled]="form.invalid" class="btn" type="submit">Добавить</button>
+    </form>
+    <app-owner-list *ngIf="owners" [owners]="owners">
+
+    </app-owner-list>
+</div>

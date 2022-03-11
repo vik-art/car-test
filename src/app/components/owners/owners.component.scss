@@ -1,0 +1,19 @@
+.form-control-container {
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  justify-content: space-between;
+  .form-control input {
+    border: 1px dotted #797878;
+    padding: 10px 20px;
+  }
+}
+.cars-container {
+  display: flex;
+  justify-content: space-around;
+  .form-control {
+    margin: 20px;
+  }
+}
